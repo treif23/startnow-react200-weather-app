@@ -1,2 +1,7 @@
 node_modules
 dist
+cityInformationEntries.jsx
+index.jsx
+app.jsx
+historyEntries.jsx
+cityInformationReducer.js
