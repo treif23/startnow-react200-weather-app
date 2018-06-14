@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class HistoryEntries extends React.Component {
         render() {
-            console.log('trying');
+          
             return (
                 <div className='card mb-3'>
                     <div id='history' className='card-header'>Search History</div>

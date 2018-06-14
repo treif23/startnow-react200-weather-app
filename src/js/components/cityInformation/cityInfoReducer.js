@@ -10,7 +10,7 @@ const defaultState = {
     windSpeed: ''
 };
 
-export default function cityInformationReducer(state = defaultState, action) {
+export default function cityInfoReducer(state = defaultState, action) {
     const { type, payload } = action;
 
     switch (type) {
