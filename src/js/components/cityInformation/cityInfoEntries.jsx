@@ -10,8 +10,9 @@ export default class CityInfoEntries extends React.Component {
                     <div className='card-body'>
                         <form>
                             <div className='row'>
-                                <h2 className='col-12' htmlFor='income-description' id='cityName'><strong>{this.props.name}</strong></h2>
-                                <div className='col-12' id='latitude'>Latitude/Longitude: {this.props.lat}/{this.props.lon}</div>
+                            
+                                <h2 className='col-12' htmlFor='income-description' id='cityName'><img src={'http://openweathermap.org/img/w/'+ this.props.icon +'.png'} /><strong>{this.props.name}</strong></h2>
+                                <div className='col-12' id='latitude'>Lat/Long: {this.props.lat},{this.props.lon}</div>
                             </div>
                             <hr />
 

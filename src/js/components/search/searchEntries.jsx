@@ -3,6 +3,8 @@ import React from 'react';
 
 import {
     updateCityDescription,
+    searchCity,
+   // updateSanDiego
 } from './searchActions';
 
 export default class SearchEntries extends React.Component {
@@ -10,20 +12,32 @@ export default class SearchEntries extends React.Component {
         super(props);
 
         this.handleSearch = this.handleSearch.bind(this);
-
+        this.handleSearchInput = this.handleSearchInput.bind(this);
+       // this.sanDiegoClick = this.sanDiegoClick.bind(this);
     }
-    handleSearch(event) {
-        // dispatch was provided by connect()
+
+    handleSearchInput(event) {
         const { dispatch } = this.props;
         const { value } = event.target;
-     
-        dispatch(updateCityDescription(value));
-        console.log(this.props);        
+        dispatch(searchCity(value));
     }
 
-//onClick =store.dispatch in button?
-    render() {
+    handleSearch(event) {
+        // dispatch was provided by connect()
+        const { dispatch, searchText } = this.props;
+        dispatch(updateCityDescription(searchText));
+        console.log(this.props);
+    }
 
+    // sanDiegoClick(event) {
+    //     const { dispatch } = this.props;
+    //     const { value } = event.target;
+    //     dispatch(updateSanDiego(value));
+    // }
+
+
+    render() {
+        const { searchText } = this.props;
         return (
             <div>
 
@@ -34,7 +48,8 @@ export default class SearchEntries extends React.Component {
                 <button type="button" className="btn-sm btn-primary">Tokyo</button>
                 <div className='row'>
                     <div className="input-group mb-3">
-                        <input type="text" id="bar" className="form-control col-11" placeholder="City Name" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                        <input type="text" id="bar" className="form-control col-11" placeholder="City Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                            onChange={this.handleSearchInput}></input>
                         <div className="input-group-append">
                             <button id='search' className="btn btn-outline-secondary" onClick={this.handleSearch} type="button">Go!</button>
                         </div>

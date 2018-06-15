@@ -16,6 +16,14 @@ export default function searchReducer(state = defaultState, action) {
     const { type, payload } = action;
             //action.type?
     switch (type) {
+        case 'SEARCH_CITY': {
+            //update your store with whatever is typed
+            return {
+                ...state,
+                searchText: payload.searchText
+              };
+            }
+        
         //here in the case of the update description action
         case 'UPDATE_CITY_DESCRIPTION_FULFILLED': {
             //payload == response
@@ -32,6 +40,7 @@ export default function searchReducer(state = defaultState, action) {
                 temp_min: payload.main.temp_min,
                 temp_max: payload.main.temp_max,
                 speed: payload.wind.speed,
+                icon: payload.weather[0].icon
                
             };
         }
