@@ -8,28 +8,29 @@ const defaultState = {
     humidity: '',
     lowestTemp: '',
     highestTemp: '',
-    windSpeed: ''
+    windSpeed: '',
+    history: [],
 
 };
 
 export default function searchReducer(state = defaultState, action) {
     const { type, payload } = action;
-            //action.type?
+    //action.type?
     switch (type) {
         case 'SEARCH_CITY': {
             //update your store with whatever is typed
             return {
                 ...state,
                 searchText: payload.searchText
-              };
-            }
-        
+            };
+        }
+
         //here in the case of the update description action
         case 'UPDATE_CITY_DESCRIPTION_FULFILLED': {
             //payload == response
 
             return {
-                
+
                 ...state,
                 name: payload.name,
                 lat: payload.coord.lat,
@@ -40,17 +41,27 @@ export default function searchReducer(state = defaultState, action) {
                 temp_min: payload.main.temp_min,
                 temp_max: payload.main.temp_max,
                 speed: payload.wind.speed,
-                icon: payload.weather[0].icon
-               
+                icon: payload.weather[0].icon,
+                history: [{name: payload.name, date: new Date()}, ...state.history]
+
             };
         }
 
-        // case 'UPDATE_CITY_DESCRIPTION_FULFILLED': {
-        //     payload == response
-        // }
+        case 'SEARCH_CLICK_PENDING': {
+            return {
+              ...state,
+              pending: true  
+            };
+          }
+     }
 
 
-    }
+    // case 'UPDATE_CITY_DESCRIPTION_FULFILLED': {
+    //     payload == response
+    // }
 
-    return state;
+
+
+
+return state;
 }

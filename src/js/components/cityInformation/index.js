@@ -16,7 +16,8 @@ function mapStoreToProps(store) {
         temp_min: store.search.temp_min,
         temp_max: store.search.temp_max,
         speed: store.search.speed,
-        icon: store.search.icon
+        icon: store.search.icon,
+        history: store.search.history
     };
 }
 

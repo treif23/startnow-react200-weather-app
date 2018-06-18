@@ -16,10 +16,3 @@ export function updateCityDescription(searchText) {
     };
 }
 
-// export function updateSanDiego() {
-
-//     return {
-//         type: 'UPDATE_SAN_DIEGO',
-//         payload: axios.get('http://api.openweathermap.org/data/2.5/weather?q=san%20diego,us&units=imperial&APPID=719117474596e3118705d45da32c37f0').then(response => response.data)   
-//     };
-// }

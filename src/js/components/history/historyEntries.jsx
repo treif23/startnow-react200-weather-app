@@ -1,52 +1,63 @@
 import React from 'react';
+function formatDate(date) {
+    var monthNames = [
+        "Jan", "Feb", "Mar",
+        "Apr", "May", "June", "July",
+        "Aug", "Sept", "Oct",
+        "Nov", "Dec"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
+function formatTime(time) {
+    var hour = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+
+    var ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12;
+    hour = hour ? hour : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    return hour + ':' + minutes + ':' + seconds + ' ' + ampm;
+}
+
 
 export default class HistoryEntries extends React.Component {
-        render() {
-          
-            return (
-                <div className='card mb-3'>
-                    <div id='history' className='card-header'>Search History</div>
-                    <div className='card-body'>
-                        <form>
-                            <div className='form-group'>
-                                <label htmlFor='income-description'>Description</label>
-                                <input
-                                    type='text'
-                                    className='form-control'
-                                    id='income-description'
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <label htmlFor='income-amount'>Amount</label>
-                                <div className='input-group'>
-                                    <span className='input-group-addon'>$</span>
-                                    <input
-                                        type='text'
-                                        className='form-control'
-                                        id='income-amount'
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                type='button'
-                                className='btn btn-success col-12 mb-5'
+    render() {
+        const { history } = this.props;
 
-                            >+ Add Income
-              </button>
-                            <table className='table table-sm table-hover'>
-                                <thead>
-                                    <tr>
-                                        <th>Description</th>
-                                        
-                                    </tr>
-                                </thead>
-                                
-                            </table>
-                        </form>
+        //const date = new Date();
+        //const time = new Date();
+
+        return (
+            <div className='card'>
+                <div id='history' className='card-header'>Search History</div>
+                <div className='card-body'>
+                    <div className='row'>
+                    <table>
+                        <tbody>
+                        {history.map((history, index) => (
+                            <tr id='table' key={index}>
+                                <td  defaultValue={name}>{history.name}</td>
+                                <td  id='date'><small>{history.date.toString()}
+                                    <br />
+                                    </small></td>
+                            </tr>
+
+                        ))}
+                        </tbody>
+                        </table>
                     </div>
                 </div>
-            );
+            </div>
+        );
 
-        }
     }
+}
 
