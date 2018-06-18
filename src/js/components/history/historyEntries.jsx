@@ -39,13 +39,13 @@ export default class HistoryEntries extends React.Component {
             <div className='card'>
                 <div id='history' className='card-header'>Search History</div>
                 <div className='card-body'>
-                    <div className='row'>
+                    
                     <table>
                         <tbody>
                         {history.map((history, index) => (
                             <tr id='table' key={index}>
                                 <td  defaultValue={name}>{history.name}</td>
-                                <td  id='date'><small>{history.date.toString()}
+                                <td   id='date'><small>{history.date.toString()}
                                     <br />
                                     </small></td>
                             </tr>
@@ -53,7 +53,7 @@ export default class HistoryEntries extends React.Component {
                         ))}
                         </tbody>
                         </table>
-                    </div>
+                    
                 </div>
             </div>
         );

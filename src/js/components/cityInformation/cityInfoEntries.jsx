@@ -16,9 +16,6 @@ export default class CityInfoEntries extends React.Component {
                             </div>
                             <hr />
 
-                            
-                            
-
 
                         </form>
                     </div>
